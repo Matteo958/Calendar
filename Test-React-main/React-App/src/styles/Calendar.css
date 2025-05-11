@@ -1,0 +1,50 @@
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.calendar-container
+    .calendar-header {
+        display: flex;
+        align-items: center;
+    }
+
+.calendar-container
+    .calendar-header 
+        .calendar-header-weekdays {
+            display: flex;
+            width: 90dvw;
+        }
+
+.calendar-container
+    .calendar-header
+        button {
+            width: 50px;
+            height: 30px;
+        }
+
+.calendar-container
+    .calendar-header
+        .calendar-header-day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            width: 100%;
+        }
+
+.calendar-container 
+    button {
+        width: max-content;
+        height: 30px;
+        cursor: pointer;
+    }
+
+.calendar {
+    display: grid;
+    width: 90dvw;
+    grid-template-columns: repeat(7, 1fr);
+}

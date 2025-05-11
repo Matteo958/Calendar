@@ -1,0 +1,303 @@
+{
+  "works": [
+    {
+      "id": "1",
+      "operatorId": 2,
+      "ticketId": 1,
+      "creationDate": 1727852400000,
+      "endDate": 1727866800000,
+      "description": "Test PUT aggiornamento lavorazione"
+    },
+    {
+      "id": "2",
+      "operatorId": 2,
+      "ticketId": 1,
+      "creationDate": 1727863200000,
+      "endDate": 1727884800000,
+      "description": "Ho effettuato la manutenzione ordinaria del server, includendo l'applicazione di aggiornamenti di sistema, la pulizia dei file temporanei e l'ottimizzazione dell'utilizzo del disco. Ho verificato la stabilità del server e il corretto funzionamento di tutti i servizi."
+    },
+    {
+      "id": "3",
+      "operatorId": 4,
+      "ticketId": 2,
+      "creationDate": 1729166400000,
+      "endDate": 1729173600000,
+      "description": "Ho analizzato i requisiti del cliente per la nuova infrastruttura IT, identificando le esigenze principali di scalabilità e sicurezza. Ho progettato un'architettura basata su server ridondanti, rete ottimizzata e policy di backup avanzate."
+    },
+    {
+      "id": "4",
+      "operatorId": 3,
+      "ticketId": 1,
+      "creationDate": 1729839600000,
+      "endDate": 1729843200000,
+      "description": "Ho completato la manutenzione ordinaria includendo la configurazione di backup incrementali, il controllo dei log di sicurezza e l'aggiornamento delle policy di accesso. Ho concluso con un test di ripristino per garantire l'affidabilità dei dati."
+    },
+    {
+      "id": "5",
+      "operatorId": 4,
+      "ticketId": 2,
+      "creationDate": 1730367000000,
+      "endDate": 1730370600000,
+      "description": "Ho definito il layout della rete, inclusa la distribuzione di router, switch e access point, per garantire una connettività stabile. Ho pianificato le configurazioni dei server per supportare il carico previsto e implementare una gestione centralizzata."
+    },
+    {
+      "id": "6",
+      "operatorId": 1,
+      "ticketId": 5,
+      "creationDate": 1730793600000,
+      "endDate": 1730808000000,
+      "description": "Ho eseguito la verifica delle configurazioni dei backup automatici sul server e analizzato i log per individuare eventuali errori. Ho risolto un problema di autenticazione che impediva il completamento delle operazioni."
+    },
+    {
+      "id": "7",
+      "operatorId": 2,
+      "ticketId": 3,
+      "creationDate": 1731409200000,
+      "endDate": 1731412800000,
+      "description": "Ho eseguito una scansione delle vulnerabilità sul sistema, identificando configurazioni obsolete o non sicure. Ho implementato correzioni per migliorare la sicurezza complessiva del sistema."
+    },
+    {
+      "id": "8",
+      "operatorId": 2,
+      "ticketId": 5,
+      "creationDate": 1732003200000,
+      "endDate": 1732010400000,
+      "description": "Ho eseguito un test di ripristino per verificare l'integrità dei dati salvati nei backup automatici. Tutti i file critici sono stati recuperati con successo. Ho aggiornato il report di monitoraggio."
+    },
+    {
+      "id": "9",
+      "operatorId": 3,
+      "ticketId": 4,
+      "creationDate": 1732626000000,
+      "endDate": 1732629600000,
+      "description": "Ho controllato le configurazioni del client VPN e individuato un errore nei parametri di autenticazione. Ho aggiornato le credenziali e testato la connessione, che è tornata operativa."
+    },
+    {
+      "id": "10",
+      "operatorId": 4,
+      "ticketId": 3,
+      "creationDate": 1732719600000,
+      "endDate": 1732723200000,
+      "description": "Ho installato tutte le patch di sicurezza critiche rilasciate per il sistema operativo e le applicazioni principali. Successivamente, ho verificato che tutti i servizi siano operativi."
+    },
+    {
+      "id": "11",
+      "operatorId": 3,
+      "ticketId": 3,
+      "creationDate": 1733126400000,
+      "endDate": 1733140800000,
+      "description": "Ho analizzato i log di sicurezza per individuare tentativi di accesso non autorizzati. Ho implementato notifiche automatiche in caso di eventi sospetti e testato il sistema di alert."
+    },
+    {
+      "id": "12",
+      "operatorId": 4,
+      "ticketId": 4,
+      "creationDate": 1733738400000,
+      "endDate": 1733742000000,
+      "description": "Ho analizzato il traffico VPN per individuare colli di bottiglia che rallentavano le connessioni. Ho ottimizzato il protocollo utilizzato e ridotto la latenza migliorando l'esperienza degli utenti."
+    },
+    {
+      "id": "13",
+      "operatorId": 1,
+      "ticketId": 4,
+      "creationDate": 1734357600000,
+      "endDate": 1734368400000,
+      "description": "Ho verificato la validità dei certificati di sicurezza utilizzati dalla VPN. Dopo aver aggiornato un certificato scaduto, ho testato la connessione per garantire la compatibilità con i client."
+    },
+    {
+      "id": "14",
+      "operatorId": 2,
+      "ticketId": 3,
+      "creationDate": 1734969600000,
+      "endDate": 1734973200000,
+      "description": "Ho aggiornato le policy di accesso al sistema per includere autenticazione a due fattori e regole più restrittive per gli utenti amministrativi. Ho comunicato le nuove procedure agli utenti interessati."
+    },
+    {
+      "id": "15",
+      "operatorId": 4,
+      "ticketId": 1,
+      "creationDate": 1734948000000,
+      "endDate": 1734955200000,
+      "description": "Ho completato la manutenzione ordinaria includendo la configurazione di backup incrementali, il controllo dei log di sicurezza e l'aggiornamento delle policy di accesso. Ho concluso con un test di ripristino per garantire l'affidabilità dei dati."
+    },
+    {
+      "id": "02c0",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746892815516,
+      "endDate": 1746896415516,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "9f54",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746893114695,
+      "endDate": 1746896714695,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "99a5",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746893135906,
+      "endDate": 1746896735906,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "826c",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746893163994,
+      "endDate": 1746896763994,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "5cf1",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746901118293,
+      "endDate": 1746904718293,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "7c8a",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983084607,
+      "endDate": 1746986684607,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "2837",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983121873,
+      "endDate": 1746986721873,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "60c1",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983130700,
+      "endDate": 1746986730700,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "dc5d",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983136293,
+      "endDate": 1746986736293,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "2dc6",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983147218,
+      "endDate": 1746986747219,
+      "description": "Test POST nuova lavorazione"
+    },
+    {
+      "id": "beb3",
+      "operatorId": 1,
+      "ticketId": 2,
+      "creationDate": 1746983155979,
+      "endDate": 1746986755979,
+      "description": "Test POST nuova lavorazione"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "1",
+      "customerId": 1,
+      "description": "Manutenzione ordinaria server",
+      "priorityId": 3
+    },
+    {
+      "id": "2",
+      "customerId": 1,
+      "description": "Progettazione nuova infrastruttura IT",
+      "priorityId": 2
+    },
+    {
+      "id": "3",
+      "customerId": 2,
+      "description": "Aggiornamento sicurezza sistema",
+      "priorityId": 1
+    },
+    {
+      "id": "4",
+      "customerId": 2,
+      "description": "Analisi problema connessione VPN",
+      "priorityId": 2
+    },
+    {
+      "id": "5",
+      "customerId": 1,
+      "description": "Verifica backup automatici",
+      "priorityId": 1
+    }
+  ],
+  "operators": [
+    {
+      "id": "1",
+      "name": "Anna",
+      "surname": "Verdi",
+      "email": "anna.verdi@example.com"
+    },
+    {
+      "id": "2",
+      "name": "Mario",
+      "surname": "Rossi",
+      "email": "mario.rossi@example.com"
+    },
+    {
+      "id": "3",
+      "name": "Luca",
+      "surname": "Bianchi",
+      "email": "luca.bianchi@example.com"
+    },
+    {
+      "id": "4",
+      "name": "Carla",
+      "surname": "Neri",
+      "email": "carla.neri@example.com"
+    }
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Azienda Alfa",
+      "address": "Via Roma 1, Milano",
+      "email": "info@aziendaalfa.it",
+      "phone": "02-1234567"
+    },
+    {
+      "id": "2",
+      "name": "Azienda Beta",
+      "address": "Corso Garibaldi 20, Torino",
+      "email": "info@aziendabeta.it",
+      "phone": "011-9876543"
+    }
+  ],
+  "priorities": [
+    {
+      "id": "1",
+      "name": "Alta",
+      "description": "Lavorazioni urgenti, da completare il prima possibile."
+    },
+    {
+      "id": "2",
+      "name": "Media",
+      "description": "Lavorazioni importanti, ma non critiche."
+    },
+    {
+      "id": "3",
+      "name": "Bassa",
+      "description": "Lavorazioni a bassa priorità, possono essere posticipate."
+    }
+  ]
+}

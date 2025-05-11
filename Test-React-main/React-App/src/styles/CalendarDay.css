@@ -1,0 +1,49 @@
+.calendar-cell {
+    background-color: grey;
+    width: auto;
+    height: auto;
+    min-height: 100px;
+    max-height: 200px;
+    border: 1px solid black;
+    cursor: not-allowed;
+    
+}
+
+.calendar-cell:not([data-day-in-month= '']) {
+    background-color: white;
+    cursor: pointer;
+    overflow-y: scroll ;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    display: flex;
+    gap: 5px;
+}
+
+.calendar-cell
+    .calendar-number-day {
+        position: sticky;
+        height: max-content;
+        top: 0;
+    }
+
+.calendar-cell
+    .calendar-day-works {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 1005;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+.calendar-cell
+    .calendar-day-works 
+        .calendar-work {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background-color: rgb(255, 255, 114);
+            border: 1px solid rgb(255, 210, 7);
+            border-radius: 5px;
+        }
+

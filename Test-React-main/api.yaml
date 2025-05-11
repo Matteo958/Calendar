@@ -1,0 +1,496 @@
+openapi: 3.0.0
+info:
+  title: API per Gestione Lavorazioni
+  version: 1.2.0
+  description: API per leggere, filtrare e recuperare dati relativi alle lavorazioni, ticket, operatori, clienti e priorità.
+servers:
+  - url: http://localhost:12345
+paths:
+  /works:
+    get:
+      summary: Recupera tutte le lavorazioni
+      description: Restituisce un elenco completo delle lavorazioni o un elenco filtrato in base ai parametri di query.
+      parameters:
+        - name: creationDate_gte
+          in: query
+          description: Filtra le lavorazioni create a partire da questa data (inclusa).
+          schema:
+            type: string
+            format: date-time
+        - name: creationDate_lte
+          in: query
+          description: Filtra le lavorazioni create fino a questa data (inclusa).
+          schema:
+            type: string
+            format: date-time
+        - name: endDate_gte
+          in: query
+          description: Filtra le lavorazioni con una data di fine a partire da questa data (inclusa).
+          schema:
+            type: string
+            format: date-time
+        - name: endDate_lte
+          in: query
+          description: Filtra le lavorazioni con una data di fine fino a questa data (inclusa).
+          schema:
+            type: string
+            format: date-time
+        - name: operatorId
+          in: query
+          description: Filtra le lavorazioni per ID dell'operatore.
+          schema:
+            type: integer
+        - name: ticketId
+          in: query
+          description: Filtra le lavorazioni per ID del ticket.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Elenco delle lavorazioni filtrate
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Work'
+    post:
+      summary: Crea una nuova lavorazione
+      description: Crea una nuova lavorazione con i dati forniti.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Work'
+      responses:
+        '201':
+          description: Lavorazione creata con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Work'
+  /works/{id}:
+    get:
+      summary: Recupera una lavorazione specifica
+      description: Restituisce i dettagli di una lavorazione in base al suo ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID della lavorazione da recuperare.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli della lavorazione
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Work'
+    put:
+      summary: Aggiorna una lavorazione esistente
+      description: Aggiorna i dati di una lavorazione esistente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID della lavorazione da aggiornare.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Work'
+      responses:
+        '200':
+          description: Lavorazione aggiornata con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Work'
+  /works/operators/{operatorId}:
+    get:
+      summary: Recupera le lavorazioni di un operatore specifico
+      description: Restituisce tutte le lavorazioni associate a un operatore specifico.
+      parameters:
+        - name: operatorId
+          in: path
+          required: true
+          description: ID dell'operatore.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Elenco delle lavorazioni dell'operatore
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Work'
+  /works/tickets/{ticketId}:
+    get:
+      summary: Recupera le lavorazioni di un ticket specifico
+      description: Restituisce tutte le lavorazioni associate a un ticket specifico.
+      parameters:
+        - name: ticketId
+          in: path
+          required: true
+          description: ID del ticket.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Elenco delle lavorazioni del ticket
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Work'
+  /tickets:
+    get:
+      summary: Recupera tutti i ticket
+      description: Restituisce un elenco completo dei ticket.
+      responses:
+        '200':
+          description: Elenco dei ticket
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+    post:
+      summary: Crea un nuovo ticket
+      description: Crea un nuovo ticket con i dati forniti.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '201':
+          description: Ticket creato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+  /tickets/{id}:
+    get:
+      summary: Recupera un ticket specifico
+      description: Restituisce i dettagli di un ticket in base al suo ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del ticket da recuperare.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli del ticket
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+    put:
+      summary: Aggiorna un ticket esistente
+      description: Aggiorna i dati di un ticket esistente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del ticket da aggiornare.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '200':
+          description: Ticket aggiornato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+  /operators:
+    get:
+      summary: Recupera tutti gli operatori
+      description: Restituisce un elenco completo degli operatori.
+      responses:
+        '200':
+          description: Elenco degli operatori
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Operator'
+    post:
+      summary: Crea un nuovo operatore
+      description: Crea un nuovo operatore con i dati forniti.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      responses:
+        '201':
+          description: Operatore creato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operator'
+  /operators/{id}:
+    get:
+      summary: Recupera un operatore specifico
+      description: Restituisce i dettagli di un operatore in base al suo ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID dell'operatore da recuperare.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli dell'operatore
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operator'
+    put:
+      summary: Aggiorna un operatore esistente
+      description: Aggiorna i dati di un operatore esistente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID dell'operatore da aggiornare.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      responses:
+        '200':
+          description: Operatore aggiornato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operator'
+  /customers:
+    get:
+      summary: Recupera tutti i clienti
+      description: Restituisce un elenco completo dei clienti.
+      responses:
+        '200':
+          description: Elenco dei clienti
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      summary: Crea un nuovo cliente
+      description: Crea un nuovo cliente con i dati forniti.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Cliente creato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    get:
+      summary: Recupera un cliente specifico
+      description: Restituisce i dettagli di un cliente in base al suo ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del cliente da recuperare.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli del cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    put:
+      summary: Aggiorna un cliente esistente
+      description: Aggiorna i dati di un cliente esistente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del cliente da aggiornare.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Cliente aggiornato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /priorities:
+    get:
+      summary: Recupera tutte le priorità
+      description: Restituisce un elenco completo delle priorità.
+      responses:
+        '200':
+          description: Elenco delle priorità
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Priority'
+    post:
+      summary: Crea una nuova priorità
+      description: Crea una nuova priorità con i dati forniti.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Priority'
+      responses:
+        '201':
+          description: Priorità creata con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priority'
+  /priorities/{id}:
+    get:
+      summary: Recupera una priorità specifica
+      description: Restituisce i dettagli di una priorità in base al suo ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID della priorità da recuperare.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dettagli della priorità
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priority'
+    put:
+      summary: Aggiorna una priorità esistente
+      description: Aggiorna i dati di una priorità esistente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID della priorità da aggiornare.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Priority'
+      responses:
+        '200':
+          description: Priorità aggiornata con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priority'
+components:
+  schemas:
+    Work:
+      type: object
+      properties:
+        id:
+          type: integer
+        operatorId:
+          type: integer
+        ticketId:
+          type: integer
+        creationDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: integer
+        customerId:
+          type: integer
+        description:
+          type: string
+        priorityId:
+          type: integer
+    Operator:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+          format: email
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+    Priority:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+

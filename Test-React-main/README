@@ -1,0 +1,35 @@
+### Implementare una maschera in stile master-detail di un calendario per l'assegnazione delle ore alle lavorazioni dei clienti.
+
+## Lettura
+
+# Master
+    - Deve presentarsi sotto la forma di un calendario che mostri il mese selezionato (inizialmente quello corrente).
+    - Ogni giorno deve elencare le diverse lavorazioni eseguite con la quantità minima possibile di dettagli per poterle distinguere in modo sommario, es: nome operatore, nome cliente.
+    - Il calendario deve poter essere filtrabile per mostrare solo le lavorazioni eseguite da un certo operatore o assegnate a un certo cliente. Altri filtri opzionali, ma graditi.
+
+# Detail
+    - Cliccando una lavorazione è possibile vederla in dettaglio.
+    - Il dettaglio deve comprendere:
+        Le informazioni dell'operatore
+        Il informazioni del cliente
+        La descrizione della lavorazione
+        Le informazioni del ticket relativo alla lavorazione
+        Le ore impegnate dalla lavorazione
+
+## Scrittura
+
+# Aggiunta lavorazione
+    - Nella schermata Master ogni giorno del calendario deve avere la possibilità di aggiungere una lavorazione in cui specificare i dati
+    fondamentali alla sua creazione
+
+# Modifica lavorazione
+    - Nella schermata Master ogni lavorazione, elencata nel riquadro del giorno, deve avere la possibilità di aprire la maschera di Detail in modalità di edit
+    - nella quale devono essere mostrati tutti i dati standard della finestra detail e dove è possibile modificarli
+    Nella schermata di dettaglio si deve avere la possibilità di entrare in modalità di edit e quindi di modificarne ogni campo
+
+- Per avviare json-server, nella root del test, esegui 
+    json-server --watch db.json --port 12345
+- Per la versione dev dell'app React, spostati su React-App/ ed esegui
+    npm start
+
+nel file api.yaml è presente la documentazione dell'API
