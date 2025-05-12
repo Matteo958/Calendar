@@ -9,6 +9,8 @@ const CalendarDay = props => {
         works,
     } = props;
 
+    console.log(works)
+
     return (
         <div className="calendar-cell"
              data-day-in-month={day}>

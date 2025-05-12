@@ -15,7 +15,7 @@ const Calendar = props => {
     } = props;
 
     const {getData} = useContext(DataContext);
-    const [works, setWorks] = useState([]);
+    const [works, setWorks] = useState();
     const [operators, setOperators] = useState([]);
     const [customers, setCustomers] = useState([]);
     const [tickets, setTickets] = useState([]);
@@ -59,8 +59,6 @@ const Calendar = props => {
                     break
             }
         }
-
-        
     }, [currentDate])
 
     const getFirstDayInMonth = useCallback(() => {
@@ -90,6 +88,7 @@ const Calendar = props => {
     })
 
     const filterWorksByDay = useCallback((works, day) => {
+        
         return works
             .filter(work => work.day == day && 
                     (!selectedOperator || work.operator == selectedOperator) && 
@@ -99,7 +98,7 @@ const Calendar = props => {
                 const ticket = tickets.find(ticket => ticket.id == work.ticket);
                 const customer = ticket ? customers.find(customer => customer.id == ticket.customerId) : null;
                 return {
-                    workId: work?.id,
+                    workId: work.id,
                     operatorName: operator?.name,
                     operatorSurname: operator?.surname,
                     customerId: customer?.id,
@@ -174,11 +173,10 @@ const Calendar = props => {
             <Button label={">"} handleClick={() => handleCurrentDate(1)}/>
             </div>
             <div className="calendar">
-                {[...Array(getDaysInMonth() + getFirstDayInMonth())].map((_, index) => {
+                {works && [...Array(getDaysInMonth() + getFirstDayInMonth())].map((_, index) => {
                     if (index < getFirstDayInMonth()) {
                         return <CalendarDay key={index} day={""}/>
                     } else {
-                        
                         return <CalendarDay key={index} day={index - (getFirstDayInMonth() - 1)} works={filterWorksByDay(works, index - (getFirstDayInMonth() - 1))}/>
                     }
                 })}
