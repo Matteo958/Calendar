@@ -85,7 +85,7 @@ const Calendar = props => {
             }
         });
         return worksByMonth;
-    })
+    }, [currentDate]);
 
     const filterWorksByDay = useCallback((works, day) => {
         
@@ -118,14 +118,8 @@ const Calendar = props => {
     useEffect(
         () => {
             getData('/works').then(
-                result => setWorks(handleWorks(result))
+                result => setWorks(result)
             );
-
-        }, [currentDate]
-    )
-
-    useEffect(
-        () => {
             getData('/operators').then(
                 result => setOperators(result)
             );
@@ -177,7 +171,7 @@ const Calendar = props => {
                     if (index < getFirstDayInMonth()) {
                         return <CalendarDay key={index} day={""}/>
                     } else {
-                        return <CalendarDay key={index} day={index - (getFirstDayInMonth() - 1)} works={filterWorksByDay(works, index - (getFirstDayInMonth() - 1))}/>
+                        return <CalendarDay key={index} day={index - (getFirstDayInMonth() - 1)} works={filterWorksByDay(handleWorks(works), index - (getFirstDayInMonth() - 1))}/>
                     }
                 })}
             </div>
