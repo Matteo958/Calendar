@@ -7,6 +7,38 @@
 }
 
 .calendar-container
+    .calendar-date-filters {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+.calendar-container
+    .calendar-date-filters 
+        .calendar-date {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-left: 20px;
+        }
+
+.calendar-container
+    .calendar-date-filters 
+        .calendar-filters {
+            display: flex;
+            gap: 20px;
+            font-size: 1.3em;
+        }
+
+.calendar-container
+    .calendar-date-filters 
+        .calendar-filters 
+            .calendar-filters-select {
+                display: flex;
+                gap: 5px;
+            }
+
+.calendar-container
     .calendar-header {
         display: flex;
         align-items: center;

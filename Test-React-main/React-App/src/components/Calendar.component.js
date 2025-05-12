@@ -7,6 +7,9 @@ import Select from "./Select.component";
 
 const Calendar = props => {
 
+    const months = [ "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", 
+           "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre" ];
+
     const {
 
     } = props;
@@ -139,22 +142,25 @@ const Calendar = props => {
 
     return (
         <div className="calendar-container">
-            <div>{currentDate.currentMonth}</div>
-            <div className="calendar-filters">
-                <Select name="operators-select" 
-                        label="Seleziona un operatore: " 
-                        defaultValue="--Tutti gli operatori--" 
-                        dataOptions={operators}
-                        selectedOperator={selectedOperator}
-                        onChangeValue={selectOperator}/>
-                <Select name="customers-select" 
-                        label="Seleziona un cliente: " 
-                        defaultValue="--Tutti i clienti--" 
-                        dataOptions={customers}
-                        onChangeValue={selectCustomer}/>
+            <div className="calendar-date-filters">
+                <div className="calendar-date">{months[currentDate.currentMonth]} - {currentDate.currentYear}</div>
+                <div className="calendar-filters">
+                    <Select name="operators-select" 
+                            label="Seleziona un operatore: " 
+                            defaultValue="--Tutti gli operatori--" 
+                            dataOptions={operators}
+                            selectedOperator={selectedOperator}
+                            onChangeValue={selectOperator}/>
+                    <Select name="customers-select" 
+                            label="Seleziona un cliente: " 
+                            defaultValue="--Tutti i clienti--" 
+                            dataOptions={customers}
+                            onChangeValue={selectCustomer}/>
+                </div>
             </div>
+            
             <div className="calendar-header">
-            <Button label={"prev"} handleClick={() => handleCurrentDate(-1)}/>
+            <Button label={"<"} handleClick={() => handleCurrentDate(-1)}/>
                 <div className="calendar-header-weekdays">
                     <div className="calendar-header-day">DOM</div>
                     <div className="calendar-header-day">LUN</div>
@@ -165,7 +171,7 @@ const Calendar = props => {
                     <div className="calendar-header-day">SAB</div>
                 </div>
                 
-            <Button label={"next"} handleClick={() => handleCurrentDate(1)}/>
+            <Button label={">"} handleClick={() => handleCurrentDate(1)}/>
             </div>
             <div className="calendar">
                 {[...Array(getDaysInMonth() + getFirstDayInMonth())].map((_, index) => {
