@@ -90,7 +90,7 @@ const Calendar = props => {
         return works
             .filter(work => work.day == day && 
                     (!selectedOperator || work.operator == selectedOperator) && 
-                    (!selectedCustomer || work.customerId == selectedCustomer))
+                    (!selectedCustomer || customers.find(customer => customer.id == tickets.find(ticket => ticket.id == work.ticket).customerId).id == selectedCustomer))
             .map(work => {
                 const operator = operators.find(operator => operator.id == work.operator);
                 const ticket = tickets.find(ticket => ticket.id == work.ticket);
