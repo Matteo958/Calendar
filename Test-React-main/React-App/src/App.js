@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, useContext } from 'react';
 import Calendar from './components/Calendar.component';
 import { DataContext } from "./components/DataContext";
+import './styles/App.css';
 
 const App = () => {
 
