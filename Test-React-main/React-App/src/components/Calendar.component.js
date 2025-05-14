@@ -4,6 +4,7 @@ import Button from "./Button.component";
 import "../styles/Calendar.css";
 import { DataContext } from "./DataContext";
 import Select from "./Select.component";
+import Detail from "./Detail.component";
 
 const Calendar = props => {
 
@@ -13,6 +14,9 @@ const Calendar = props => {
     const {
 
     } = props;
+    console.log('render')
+
+    const {openDetail, setOpenDetail} = useContext(DataContext);
 
     const {getData} = useContext(DataContext);
     const [works, setWorks] = useState();
@@ -65,9 +69,15 @@ const Calendar = props => {
         return new Date(currentDate.currentYear, currentDate.currentMonth, 1).getDay();
     }, [currentDate])
 
-    const getDaysInMonth = useCallback(() => {
-        return new Date(currentDate.currentYear, currentDate.currentMonth + 1, 0).getDate();
+    const getLastDayInMonth = useCallback(() => {
+        return new Date(currentDate.currentYear, currentDate.currentMonth + 1, 0).getDay();
     }, [currentDate])
+
+    const getDaysInMonth = useCallback((index) => {
+        return new Date(currentDate.currentYear, currentDate.currentMonth + index, 0).getDate();
+    }, [currentDate])
+
+
 
     const handleWorks = useCallback((works) => {
         let worksByMonth = [];
@@ -81,14 +91,16 @@ const Calendar = props => {
                     description: element.description,
                     operator: element.operatorId,
                     ticket: element.ticketId,
+                    creationDate: element.creationDate,
+                    endDate: element.endDate,
                 });
             }
         });
         return worksByMonth;
-    })
+    }, [currentDate]);
 
     const filterWorksByDay = useCallback((works, day) => {
-        
+       
         return works
             .filter(work => work.day == day && 
                     (!selectedOperator || work.operator == selectedOperator) && 
@@ -102,7 +114,11 @@ const Calendar = props => {
                     operatorName: operator?.name,
                     operatorSurname: operator?.surname,
                     customerId: customer?.id,
-                    customer: customer?.name
+                    customer: customer?.name,
+                    description: work.description,
+                    ticketDescription: ticket?.description,
+                    creationDate: work.creationDate,
+                    endDate: work.endDate
                 };
             });
     }, [operators, customers, tickets, selectedOperator, selectedCustomer]);
@@ -115,17 +131,19 @@ const Calendar = props => {
         setSelectedCustomer(value);
     }, []);
 
+    const closeDetail = useCallback(() => {
+        setOpenDetail({
+            open: false,
+            editable: false,
+            details: {}
+        })
+    }, []);
+
     useEffect(
         () => {
             getData('/works').then(
-                result => setWorks(handleWorks(result))
+                result => setWorks(result)
             );
-
-        }, [currentDate]
-    )
-
-    useEffect(
-        () => {
             getData('/operators').then(
                 result => setOperators(result)
             );
@@ -148,12 +166,13 @@ const Calendar = props => {
                             label="Seleziona un operatore: " 
                             defaultValue="--Tutti gli operatori--" 
                             dataOptions={operators}
-                            selectedOperator={selectedOperator}
+                            selected={selectedOperator}
                             onChangeValue={selectOperator}/>
                     <Select name="customers-select" 
                             label="Seleziona un cliente: " 
                             defaultValue="--Tutti i clienti--" 
                             dataOptions={customers}
+                            selected={selectedCustomer}
                             onChangeValue={selectCustomer}/>
                 </div>
             </div>
@@ -173,14 +192,25 @@ const Calendar = props => {
             <Button label={">"} handleClick={() => handleCurrentDate(1)}/>
             </div>
             <div className="calendar">
-                {works && [...Array(getDaysInMonth() + getFirstDayInMonth())].map((_, index) => {
+                {console.log(getFirstDayInMonth())}
+                {works && [...Array(getDaysInMonth(1) + getFirstDayInMonth() + (6 - getLastDayInMonth()))].map((_, index) => {
                     if (index < getFirstDayInMonth()) {
-                        return <CalendarDay key={index} day={""}/>
+                        return <div className="calendar-cell not-current" key={index}>{getDaysInMonth(0) - (getFirstDayInMonth() - (index + 1))}</div>
+                    } else if (index < (getDaysInMonth(1) + getFirstDayInMonth())) {
+                        return <CalendarDay key={index} day={index - (getFirstDayInMonth() - 1)} works={filterWorksByDay(handleWorks(works), index - (getFirstDayInMonth() - 1))}/>
                     } else {
-                        return <CalendarDay key={index} day={index - (getFirstDayInMonth() - 1)} works={filterWorksByDay(works, index - (getFirstDayInMonth() - 1))}/>
+                        return <div className="calendar-cell not-current" key={index}>{(index + 1) - (getDaysInMonth(1) + getFirstDayInMonth())}</div>
                     }
                 })}
             </div>
+            {
+                openDetail.open && 
+                    <Detail editable={openDetail.editable} 
+                            details={openDetail.details} 
+                            close={closeDetail}
+                            selectedCustomer={selectedCustomer}
+                            customers={customers}></Detail>
+            }
         </div>
         
     )

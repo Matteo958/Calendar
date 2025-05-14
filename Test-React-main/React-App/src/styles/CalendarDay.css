@@ -1,22 +1,24 @@
 .calendar-cell {
-    background-color: grey;
-    width: auto;
-    height: auto;
-    min-height: 100px;
-    max-height: 200px;
-    border: 1px solid black;
-    cursor: not-allowed;
-    
-}
-
-.calendar-cell:not([data-day-in-month= '']) {
     background-color: white;
-    cursor: pointer;
     overflow-y: scroll ;
     overflow-x: hidden;
     scrollbar-gutter: stable;
     display: flex;
     gap: 5px;
+    width: auto;
+    height: auto;
+    min-height: 100px;
+    max-height: 150px;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+
+.calendar-cell.not-current {
+    background-color: rgb(190, 190, 190);
+    overflow: hidden;
+    cursor: default;
+    color: #0000005d;
 }
 
 .calendar-cell
@@ -45,5 +47,11 @@
             background-color: rgb(255, 255, 114);
             border: 1px solid rgb(255, 210, 7);
             border-radius: 5px;
+        }
+
+.calendar-cell
+    .calendar-day-works 
+        .calendar-work div{
+            pointer-events: none;
         }
 

@@ -8,18 +8,22 @@ const Select = props => {
         label,
         defaultValue,
         dataOptions,
-        selectedOperator,
+        selected,
         onChangeValue,
+        disabled
     } = props;
 
     const handleChange = useCallback((event) => {
-        onChangeValue(event.target.value);
+        if (onChangeValue) {
+             onChangeValue(event.target.value);
+        } 
+       
     }, [])
 
     return (
         <div className="calendar-filters-select">
             <label htmlFor={name}>{label}</label>
-            <select name={name} id={name} value={selectedOperator} onChange={handleChange}>
+            <select name={name} id={name} value={selected} onChange={handleChange} disabled={disabled}>
                 <option value=''>{defaultValue}</option>
                 {dataOptions && dataOptions.map((option, index) => {
                     return <option key={index} value={option.id}>{option.name} {option.surname}</option>

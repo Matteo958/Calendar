@@ -1,0 +1,154 @@
+.detail-container {
+    position: absolute;
+    width: 50dvw;
+    height: 75dvh;
+    background-color: rgb(188, 188, 188);
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.detail-container 
+    .detail-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+.detail-container 
+    .detail-close button{
+        width: 40px;
+        height: 40px; 
+        border: none;
+        background-color: white;
+        padding: 0;
+    }
+
+.detail-container 
+    .detail-form {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-auto-rows: auto;
+        grid-template-areas: 
+            "operator-name      operator-name       operator-surname   operator-surname"
+            "customer           customer                   .                  ."
+            "work-description   work-description    work-description   work-description"
+            "work-description   work-description    work-description   work-description"
+            "ticket-description ticket-description  ticket-description ticket-description"
+            "ticket-description ticket-description  ticket-description ticket-description"
+            "start-hour         end-hour            tot-hours          tot-hours"
+        ;
+        row-gap: 10px;
+        width: 90%;
+        height: 100%;
+        padding-block: 40px;
+        box-sizing: border-box;
+    }
+
+
+
+.detail-container 
+    .detail-form
+        .operator-name {
+            grid-area: operator-name;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+
+.detail-container 
+    .detail-form 
+        .operator-surname {
+            grid-area: operator-surname;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-customer {
+            grid-area: customer;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-description {
+            grid-area: work-description;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-ticket-description {
+            grid-area: ticket-description;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-description textarea {
+            flex-grow: 1;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-ticket-description textarea {
+            flex-grow: 1;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-start {
+            grid-area: start-hour;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+.detail-container 
+    .detail-form 
+        .detail-work-start input {
+            width: 50%;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-end {
+            grid-area: end-hour;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-end input {
+            width: 50%;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-total {
+            grid-area: tot-hours;
+            display: flex;
+            gap: 10px;
+            height: max-content;
+        }
+
+.detail-container 
+    .detail-form 
+        .detail-work-total input {
+            width: 50%;
+        }
